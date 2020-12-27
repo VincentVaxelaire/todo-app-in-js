@@ -1,8 +1,11 @@
 body{
-    background: #5b532f;
+    background: #2b4858;
 }
 .container{
     max-width: 600px;
+}
+h1{
+    font-weight: 900;
 }
 input[type=text],
 input[type=text]:focus{
@@ -15,10 +18,17 @@ input[type=text]:focus{
     color: #acacac;
     font-style: italic;
 }
-.todos li{
-    background: #6f673a;
+.tasks li{
+    background: #3a5a6f;
+}
+span{
+    font-weight: 700;
 }
 .delete{
     cursor: pointer;
     fill: white;
+}
+label{
+    padding-bottom: 10px;
+    font-size: 30px;
 }
