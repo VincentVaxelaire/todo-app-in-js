@@ -26,3 +26,12 @@ addEventListener('submit', e => {
         addTask.reset();
     };
 });
+
+// 3. supprimer un élément dans l'HTML en cliquant sur un icon / svg / ect
+tasksList.addEventListener('click', e => {
+    // si les enfants du parent écouté contiennent la class="delete" alors celui-ci est supprimmé de la page HTML.
+    if (e.target.classList.contains('delete')) {
+        e.target.parentElement.remove();
+    }
+});
+
