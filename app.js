@@ -1,6 +1,7 @@
-// 1. récupérer l'input pour ajouter des choses à faire :: 2. récuper le parent du template à mettre à l'intérieur de l'html
+// 1. récupérer l'input pour ajouter des choses à faire :: 2. récuper le parent du template à mettre à l'intérieur de l'html :: 3.récupérer l'input d'un <form> class=search
 const addTask = document.querySelector('.add'); // input type="text"
 const tasksList = document.querySelector('.tasks'); // ex : une <div> ou une <ul>
+const search = document.querySelector('.search input'); // écoute un input dans un form class=search
 
 // 2. Template HTML de l'élément input à mettre dans l'HTML (utiliser ${...} pour récuper la valeur entrée dans l'input)
 const taskTemplate = task => {
@@ -27,7 +28,7 @@ addEventListener('submit', e => {
     };
 });
 
-// 3. supprimer un élément dans l'HTML en cliquant sur un icon / svg / ect
+// 2.1. supprimer un élément dans l'HTML en cliquant sur un icon / svg / ect
 tasksList.addEventListener('click', e => {
     // si les enfants du parent écouté contiennent la class="delete" alors celui-ci est supprimmé de la page HTML.
     if (e.target.classList.contains('delete')) {
@@ -35,3 +36,26 @@ tasksList.addEventListener('click', e => {
     }
 });
 
+// 3.1. rechercher un terme parmis le contenu d'un élément HTML 
+const filterTasks = (term) => {
+    Array.from(tasksList.children)
+        .filter((task) => !task.textContent.includes(term))
+        .forEach((task) => task.classList.add('filtered'));
+    
+    Array.from(tasksList.children)
+        .filter((task) => task.textContent.includes(term))
+        .forEach((task) => task.classList.remove('filtered'));
+};
+
+// 3. Quand la touche du clavier se relève la recherche s'actualise
+search.addEventListener('keyup', () => {
+    const term = search.value.trim();
+    filterTasks(term);
+});
+
+// Ajouter cette class au CSS
+// .filtered{
+//     display: none !important;
+// }
+
+$
